@@ -121,10 +121,26 @@ public function updateUser($id,$usertype)
     }
   }
 
-  // Fetch garment records for show listing
+  // Fetch user records for show listing
   public function displayUserData()
   {
     $query = "SELECT * FROM login";
+    $result = $this->con->query($query);
+    if ($result->num_rows > 0) {
+      $data = array();
+      while ($row = $result->fetch_assoc()) {
+        $data[] = $row;
+      }
+      return $data;
+    }else{
+      echo "No found records";
+    }
+  }
+
+  // Fetch user record for specific user
+  public function displayCurrentUserData($email)
+  {
+    $query = "SELECT * FROM login where email='$email'";
     $result = $this->con->query($query);
     if ($result->num_rows > 0) {
       $data = array();

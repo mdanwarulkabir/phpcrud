@@ -21,13 +21,28 @@
         </div>
         <div class="menu">
           <a href="index.php">Home</a>
-          <a href="adduser.php">Add User</a>
-          <a href="viewuser.php">View User</a>
-          <a href="add.php">Garment Entry</a>
+          <?php
+            if(isset($_SESSION['email'])){
+              echo "<a href='adduser.php'>Add User</a>";
+              echo "<a href='viewuser.php'>View User</a>";
+              echo "<a href='add.php'>Garment Entry</a>";
+            }
+          ?>
           <a href="view.php">Garment List</a>
-          <a href="signup.php">Sign up</a>
-          <a href="signin.php">Sign in</a>
-          <a href="signout.php">Sign out</a>
+          <?php
+          if(isset($_SESSION['email'])){
+            echo "<a href='signout.php'>Sign out</a>";
+          }
+          ?>
+          <?php
+          if(isset($_SESSION['email'])){
+            echo "<a href='viewcurrentuser.php' style='display:inline;'>Signed in as ", $_SESSION['email'],"</a>";
+          }
+          else{
+            echo '<a href="signup.php">Sign up</a>';
+            echo '<a href="signin.php">Sign in</a>';
+          }
+          ?>
         </div>
       </nav>
     </header>

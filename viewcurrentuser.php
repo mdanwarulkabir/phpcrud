@@ -1,15 +1,11 @@
 <?php
 session_start();
-// Check if the user is not logged in
-if (!isset($_SESSION['email'])) {
-    // Display an error message and redirect to the login page
-    echo "<script>alert('You need to log in to access this page.');</script>";
-    header("Location: signin.php");
-    exit(); 
-}
 require_once("includes/database.php");
-$result = $appdb->displayUserData();
-require("includes/myheader.php");
+if(isset($_SESSION['email'])){
+  $result = $appdb->displayCurrentUserData($_SESSION['email']);  
+}
+
+  require("includes/myheader.php");
   
   // Delete record from table
   if(!empty($_SESSION)){

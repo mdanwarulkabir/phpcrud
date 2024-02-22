@@ -10,6 +10,6 @@ session_destroy();
 
 // Redirect to the login page or any other page after logout
 echo '<script>window.history.replaceState({}, document.title, "' . $_SERVER['PHP_SELF'] . '");</script>';
-header("Location: signin.php");
+header("Location: index.php");
 exit();
 ?>

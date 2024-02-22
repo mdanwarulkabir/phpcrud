@@ -1,7 +1,8 @@
 <?php
+session_start();
 require_once("includes/database.php");
 //Including header
-require_once("includes/myheader.php");
+require("includes/myheader.php");
 echo '<main class="container">';
 	//store the user inputs in variables and hash the password
 	$email = $_POST['email'];
@@ -14,8 +15,6 @@ echo '<main class="container">';
 	if($stts==1){
 		echo '<section class="success-row">';
 			echo '<div>';
-			
-			session_start();
 			
 			$_SESSION['email'] = $email;
 			$_SESSION['type'] = $usertype;
@@ -36,4 +35,5 @@ echo '<main class="container">';
 echo '</main>';
 //Including footer
 require_once("includes/myfooter.php");
+header("refresh: 0; url=index.php");
 ?>
